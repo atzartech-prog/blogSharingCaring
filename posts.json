@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "title": "Membangun Blog Tanpa Database di GitHub Pages",
+    "slug": "membangun-blog-tanpa-database",
+    "date": "2026-06-09",
+    "category": "Web Dev",
+    "author": "Admin",
+    "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+    "excerpt": "Pelajari bagaimana cara membuat blog yang cepat, gratis, dan aman hanya dengan menggunakan HTML, CSS, JavaScript, dan file JSON di GitHub Pages.",
+    "content": "<p>Membuat blog tidak selalu membutuhkan server database yang mahal atau hosting PHP yang rumit. Dengan perkembangan teknologi web modern, kita bisa memanfaatkan <strong>GitHub Pages</strong> untuk hosting gratis dan file <strong>JSON</strong> sebagai database statis.</p><p>Metode ini memiliki beberapa keuntungan utama:</p><ul><li><strong>Gratis Selamanya:</strong> GitHub Pages tidak memungut biaya sepeser pun.</li><li><strong>Kecepatan Tinggi:</strong> Karena hanya menyajikan file statis, waktu muat halaman sangat instan.</li><li><strong>Sangat Aman:</strong> Tidak ada database SQL yang bisa diretas atau disuntik (SQL Injection).</li></ul><p>Cukup dengan memperbarui file <code>posts.json</code>, blog Anda akan otomatis diperbarui. Sangat praktis!</p>"
+  },
+  {
+    "id": 2,
+    "title": "Kumpulan Maqolah Arab dan Islami Penuh Hikmah",
+    "slug": "kumpulan-maqolah-arab-islami",
+    "date": "2026-06-08",
+    "category": "Quotes",
+    "author": "Mancave Dev",
+    "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80",
+    "excerpt": "Mutiara hikmah dan Maqolah Arab pilihan beserta artinya untuk menyejukkan hati dan memberikan inspirasi kehidupan sehari-hari.",
+    "content": "<p>Bahasa Arab kaya akan sastra dan pepatah (Maqolah) yang penuh dengan kebijaksanaan mendalam. Berikut adalah salah satu maqolah indah yang patut kita renungkan:</p><blockquote style='border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-muted);'>\"Man jadda wajada\"<br><span style='font-weight: bold;'>Artinya:</span> Siapa yang bersungguh-sungguh, maka dia akan berhasil.</blockquote><p>Kata-kata hikmah ini mengingatkan kita bahwa kesuksesan tidak datang secara instan, melainkan melalui kerja keras, ketekunan, dan doa yang konsisten.</p>"
+  },
+  {
+    "id": 3,
+    "title": "Tips Desain UI/UX Minimalis untuk Pemula",
+    "slug": "tips-desain-ui-ux-minimalis",
+    "date": "2026-06-07",
+    "category": "Design",
+    "author": "Designer",
+    "image": "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=800&q=80",
+    "excerpt": "Desain minimalis bukan sekadar menyisakan ruang kosong. Pahami prinsip-prinsip utamanya untuk membuat interface yang premium.",
+    "content": "<p>Desain minimalis berfokus pada fungsionalitas dan kesederhanaan. Berikut adalah beberapa tips untuk memulainya:</p><ol><li><strong>Gunakan Spasi yang Cukup (Whitespace):</strong> Beri elemen desain ruang untuk bernapas. Ini membuat mata pengguna tidak cepat lelah.</li><li><strong>Batasi Pilihan Warna:</strong> Gunakan palet warna yang harmonis. Pilih 1 warna utama, 1 warna aksen, dan 2-3 warna netral.</li><li><strong>Tipografi yang Jelas:</strong> Gunakan font yang mudah dibaca seperti Inter, Roboto, atau Outfit. Pastikan kontras teks dengan latar belakang cukup kuat.</li></ol><p>Ingat rumus utama minimalis: <em>Less is more</em> (Lebih sedikit justru memberikan dampak lebih banyak).</p>"
+  },
+    {
+    "id": 4,
+    "title": "Menggunakan gadget lama sebagai cyberdeck",
+    "slug": "menggunakan-gadget-lama-sebagai-cyberdeck",
+    "date": "2026-06-03",
+    "category": "Retro",
+    "author": "Designer",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAqQMILNJXuTrLVegrwsxNPCvz0KM4greoe2SwW-45lw&s?auto=format&fit=crop&w=800&q=80",
+    "excerpt": "Desain minimalis bukan sekadar menyisakan ruang kosong. Pahami prinsip-prinsip utamanya untuk membuat interface yang premium.",
+    "content": "<p>Desain minimalis berfokus pada fungsionalitas dan kesederhanaan. Berikut adalah beberapa tips untuk memulainya:</p><ol><li><strong>Gunakan Spasi yang Cukup (Whitespace):</strong> Beri elemen desain ruang untuk bernapas. Ini membuat mata pengguna tidak cepat lelah.</li><li><strong>Batasi Pilihan Warna:</strong> Gunakan palet warna yang harmonis. Pilih 1 warna utama, 1 warna aksen, dan 2-3 warna netral.</li><li><strong>Tipografi yang Jelas:</strong> Gunakan font yang mudah dibaca seperti Inter, Roboto, atau Outfit. Pastikan kontras teks dengan latar belakang cukup kuat.</li></ol><p>Ingat rumus utama minimalis: <em>Less is more</em> (Lebih sedikit justru memberikan dampak lebih banyak).</p>"
+  },
+    {
+    "id": 5,
+    "title": "Kumpulan Maqolah Arab dan Islami Penuh Hikmah",
+    "slug": "kumpulan-maqolah-arab-islami",
+    "date": "2026-06-08",
+    "category": "Lainnya",
+    "author": "Mancave Dev",
+    "image": "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80",
+    "excerpt": "Mutiara hikmah dan Maqolah Arab pilihan beserta artinya untuk menyejukkan hati dan memberikan inspirasi kehidupan sehari-hari.",
+    "content": "<p>Bahasa Arab kaya akan sastra dan pepatah (Maqolah) yang penuh dengan kebijaksanaan mendalam. Berikut adalah salah satu maqolah indah yang patut kita renungkan:</p><blockquote style='border-left: 4px solid var(--accent); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--text-muted);'>\"Man jadda wajada\"<br><span style='font-weight: bold;'>Artinya:</span> Siapa yang bersungguh-sungguh, maka dia akan berhasil.</blockquote><p>Kata-kata hikmah ini mengingatkan kita bahwa kesuksesan tidak datang secara instan, melainkan melalui kerja keras, ketekunan, dan doa yang konsisten.</p>"
+  }
+]

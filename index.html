@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sharing Caring Blog - Personal Weblog</title>
+  <meta name="description" content="Personal blog sharing articles about technology, design, and inspiring quotes.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo" id="logo-link">Sharing Caring.</a>
+      <nav class="nav-links">
+        <a href="index.html" id="nav-home">Beranda</a>
+        <a href="https://github.com/pembantuakalimitasi-creator/sharingcaring" target="_blank" id="nav-github">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <h1>Selamat Datang di <span>Sharing Caring</span></h1>
+    <p>Ruang berbagi ide, tutorial web development, inspirasi desain, dan mutiara hikmah kehidupan.</p>
+  </section>
+
+  <!-- Search and Category Filters -->
+  <div class="search-filter-container">
+    <div class="search-box">
+      <input type="text" id="search-input" placeholder="Cari artikel..." autocomplete="off">
+    </div>
+    <div class="categories" id="category-list">
+      <button class="category-btn active" data-category="all">Semua</button>
+      <!-- Categories will be generated dynamically -->
+    </div>
+  </div>
+
+  <!-- Blog Posts Grid -->
+  <main class="blog-grid" id="posts-grid">
+    <!-- Posts will be generated dynamically -->
+    <div style="text-align: center; grid-column: 1/-1; padding: 3rem;">
+      <p style="color: var(--text-muted);">Memuat artikel...</p>
+    </div>
+  </main>
+
+  <script>
+    let allPosts = [];
+    let activeCategory = 'all';
+    let searchQuery = '';
+
+    const postsGrid = document.getElementById('posts-grid');
+    const categoryList = document.getElementById('category-list');
+    const searchInput = document.getElementById('search-input');
+
+    // Fetch posts from JSON file
+    async function fetchPosts() {
+      try {
+        const response = await fetch('posts.json?t=' + new Date().getTime());
+        if (!response.ok) throw new Error('Gagal memuat posts.json');
+        allPosts = await response.json();
+        
+        renderCategories();
+        renderPosts();
+      } catch (error) {
+        console.error('Error:', error);
+        postsGrid.innerHTML = `
+          <div class="no-posts">
+            <h3>Terjadi Kesalahan</h3>
+            <p>Gagal memuat daftar artikel. Pastikan file posts.json ada dan valid.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Render category buttons dynamically
+    function renderCategories() {
+      const categories = new Set(allPosts.map(post => post.category));
+      
+      // Clear existing dynamic buttons (keep 'All')
+      categoryList.innerHTML = '<button class="category-btn active" data-category="all">Semua</button>';
+
+      categories.forEach(category => {
+        const btn = document.createElement('button');
+        btn.className = 'category-btn';
+        btn.setAttribute('data-category', category);
+        btn.textContent = category;
+        categoryList.appendChild(btn);
+      });
+
+      // Add click listeners to category buttons
+      const buttons = document.querySelectorAll('.category-btn');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeCategory = btn.getAttribute('data-category');
+          renderPosts();
+        });
+      });
+    }
+
+    // Render posts based on filters and search
+    function renderPosts() {
+      const filtered = allPosts.filter(post => {
+        const matchesCategory = activeCategory === 'all' || post.category === activeCategory;
+        const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                              post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesCategory && matchesSearch;
+      });
+
+      if (filtered.length === 0) {
+        postsGrid.innerHTML = `
+          <div class="no-posts">
+            <h3>Artikel Tidak Ditemukan</h3>
+            <p>Tidak ada artikel yang cocok dengan pencarian Anda.</p>
+          </div>
+        `;
+        return;
+      }
+
+      postsGrid.innerHTML = filtered.map(post => `
+        <a href="post.html?id=${post.id}" class="post-card" id="post-${post.id}">
+          <div class="post-img-container">
+            <img src="${post.image}" alt="${post.title}" class="post-img" loading="lazy">
+          </div>
+          <div class="post-content">
+            <div class="post-meta">
+              <span class="post-tag">${post.category}</span>
+              <span class="post-date">${formatDate(post.date)}</span>
+            </div>
+            <h2 class="post-title">${post.title}</h2>
+            <p class="post-excerpt">${post.excerpt}</p>
+            <div class="post-footer">
+              <span class="post-author">Oleh: ${post.author}</span>
+              <span class="read-more">Baca Selengkapnya &rarr;</span>
+            </div>
+          </div>
+        </a>
+      `).join('');
+    }
+
+    // Helper to format date
+    function formatDate(dateStr) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateStr).toLocaleDateString('id-ID', options);
+    }
+
+    // Search input event listener
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value;
+      renderPosts();
+    });
+
+    // Initialize
+    fetchPosts();
+  </script>
+</body>
+</html>

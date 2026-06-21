@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detail Artikel - Sharing Caring Blog</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="logo" id="logo-link">Sharing Caring.</a>
+      <nav class="nav-links">
+        <a href="index.html" id="nav-home">Beranda</a>
+        <a href="https://github.com/pembantuakalimitasi-creator/sharingcaring" target="_blank" id="nav-github">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Post Detail Content Container -->
+  <main class="post-detail-container" id="post-detail">
+    <a href="index.html" class="btn-back" id="back-button">&larr; Kembali ke Beranda</a>
+    <div style="text-align: center; padding: 3rem;">
+      <p style="color: var(--text-muted);">Memuat konten artikel...</p>
+    </div>
+  </main>
+
+  <script>
+    const postDetail = document.getElementById('post-detail');
+
+    // Get Post ID from URL parameters
+    function getPostId() {
+      const params = new URLSearchParams(window.location.search);
+      return parseInt(params.get('id'), 10);
+    }
+
+    // Fetch and render the single post
+    async function loadPost() {
+      const postId = getPostId();
+      if (isNaN(postId)) {
+        renderError('ID artikel tidak valid.');
+        return;
+      }
+
+      try {
+        const response = await fetch('posts.json?t=' + new Date().getTime());
+        if (!response.ok) throw new Error('Gagal mengambil data posts.json');
+        
+        const posts = await response.json();
+        const post = posts.find(p => p.id === postId);
+
+        if (!post) {
+          renderError('Artikel tidak ditemukan.');
+          return;
+        }
+
+        renderPostContent(post);
+      } catch (error) {
+        console.error('Error:', error);
+        renderError('Gagal memuat artikel. Silakan coba lagi nanti.');
+      }
+    }
+
+    // Render post content html
+    function renderPostContent(post) {
+      // Update page title
+      document.title = `${post.title} - Sharing Caring Blog`;
+
+      postDetail.innerHTML = `
+        <a href="index.html" class="btn-back" id="back-button">&larr; Kembali ke Beranda</a>
+        
+        <article class="post-detail-header">
+          <span class="post-tag">${post.category}</span>
+          <h1 class="post-detail-title">${post.title}</h1>
+          <div style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">
+            Oleh <strong>${post.author}</strong> &bull; ${formatDate(post.date)}
+          </div>
+        </article>
+
+        <img src="${post.image}" alt="${post.title}" class="post-detail-img">
+
+        <div class="post-detail-content">
+          ${post.content}
+        </div>
+      `;
+    }
+
+    // Format Date helper
+    function formatDate(dateStr) {
+      const options = { year: 'numeric', month: 'long', day: 'numeric' };
+      return new Date(dateStr).toLocaleDateString('id-ID', options);
+    }
+
+    // Render error message
+    function renderError(message) {
+      postDetail.innerHTML = `
+        <a href="index.html" class="btn-back" id="back-button">&larr; Kembali ke Beranda</a>
+        <div class="no-posts" style="margin-top: 2rem;">
+          <h3>Kesalahan</h3>
+          <p>${message}</p>
+        </div>
+      `;
+    }
+
+    // Initialize
+    loadPost();
+  </script>
+</body>
+</html>
